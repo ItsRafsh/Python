@@ -1,0 +1,101 @@
+membuat env dulu        = python -m venv env
+buat folder projek nya  = django-admin startproject mywebsite 
+untuk aktifkan env      = env\Scripts\activate.bat
+untuk matikan env       = deactivate
+
+cara rubah port kalo ada 2 server   = python manage.py runserver 8080
+buat folder website nya             = python manage.py startapp blog
+
+
+
+
+
+
+9. manajemen templates project
+- isi "DIRS": [os.path.join(BASE_DIR, 'templates')], untuk menerima folder templates
+
+- penggunaan installan bisa seperti di bawah ini
+    'blog.apps.BlogConfig',
+    'kontak',                       #kontak doang bisa cuy
+
+- penggunaan include agar langsung semua url, gapake ribet
+    path('blog/', include('blog.urls')),
+    path('kontak/', include('kontak.urls')),
+
+- penulisan path yg simple seperti ini. jgn lupa buat def juga di file views.py
+    path('cari/', views.cari),
+    path('', views.index)
+    -----ini contoh di views.py nya-----
+    return render(request, 'blog.html')
+
+
+
+
+
+
+
+
+
+
+10. manajemen Templates Project dan Aplikasi
+- jadi seperti biasa harus di isi installan nya
+    isi ini: "DIRS": [os.path.join(BASE_DIR, 'templates')], untuk menerima folder templates
+
+- buat folder templates di dalam nya blog, agar bisa di detect
+like this templates/blog/index.html
+ini untuk di def index() nya blog
+return render(request, 'blog/index.html')
+
+
+
+
+12. penggunaan extend, block content, include, for endfor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

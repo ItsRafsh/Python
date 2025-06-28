@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- video tutor di urutan ke 9
+    <h1>halo ini index</h1>
+    <ul>
+        <li><a href="/">home</a></li>
+        <li><a href="/blog">blogg</a></li>
+        <li><a href="/kontak">kontakk</a></li>
+    </ul> -->
+    
+
+    <!-- <h1>urutan ke 10</h1>
+    <ul>
+        <li><a href="/">home</a></li>
+        <li><a href="blog">blogg</a></li>
+    </ul> -->
+    
+
+
+
+    <!-- <h1>urutan ke 11</h1>
+    <h1>{{ judul }}</h1>
+    <h3>creator {{ dev }}</h3>
+    <ul>
+        <li><a href="/">home</a></li>
+        <li><a href="blog">blogg</a></li>
+    </ul> -->
+
+{% block content %}
+    <h1>urutan ke - 12</h1>
+    <h3>selamat datang di no-12 {{ judul }}</h3>
+    <span>sang developer  {{ dev }}</span>
+    {% include 'snippets/navbar.html' %}
+{% endblock content %}
+
+
+
+</body>
+</html>

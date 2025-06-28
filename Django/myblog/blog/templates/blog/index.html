@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6">{{ heading }}</h2>
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    
+    <!-- Sidebar Kategori -->
+    <aside class="md:col-span-1 bg-gray-100 rounded-xl p-4 shadow-sm h-fit">
+      <h3 class="text-lg font-bold text-gray-800 uppercase border-b-2 border-blue-600 pb-2 mb-4 tracking-wide">
+        Kategori
+      </h3>
+
+      <!-- Tombol Semua -->
+      <a href="{% url 'blog:index' %}" class="block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition mb-3 w-fit">
+        Semua
+      </a>
+
+      <!-- Daftar Kategori -->
+      <ul class="space-y-2 mt-2">
+        {% for kat in categories %}
+        <li>
+          <a href="{% url 'blog:kategori_artikel' kat.Kategori__nama%}" class="text-blue-600 hover:underline block">
+            {{ kat.Kategori__nama }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </aside>
+
+    <!-- Artikel -->
+    <section class="md:col-span-3 space-y-6">
+      {% for post in article %}
+      <div class="flex items-start gap-4 bg-white shadow-md rounded-xl p-4 hover:shadow-lg transition">
+        <div class="flex-grow">
+          <a href="{% url 'blog:detail_artikel' post.slug_art%}">
+            <h2 class="text-xl font-semibold text-blue-600 hover:underline">{{ post.judul }}</h2>
+          </a>
+          <p class="text-gray-700 mt-2">{{ post.isi|truncatechars:200 }}</p>
+          <p class="text-sm text-gray-500 mt-2">Terakhir diperbarui: {{ post.pupdate }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </section>
+
+  </div>
+</div>
+{% endblock content %}

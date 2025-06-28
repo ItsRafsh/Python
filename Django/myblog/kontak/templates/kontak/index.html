@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 py-8">
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-3xl font-bold text-gray-800">{{ heading }}</h1>
+    <a href="{% url 'kontak:create' %}" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+      + Tambah Kontak
+    </a>
+  </div>
+
+  <div class="space-y-6">
+    {% for kontak in contact %}
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-xl font-semibold text-blue-700">{{ kontak.nama }}</h2>
+      <p class="text-gray-700 mt-1"><strong>Email:</strong> {{ kontak.email }}</p>
+      <p class="text-gray-600 mt-2">{{ kontak.pesan }}</p>
+    </div>
+    {% empty %}
+    <p class="text-gray-500">Belum ada data kontak.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

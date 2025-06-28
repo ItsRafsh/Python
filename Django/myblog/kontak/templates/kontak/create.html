@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6">{{ heading }}</h1>
+
+  <form method="POST" class="bg-white shadow-md rounded-lg p-6 space-y-6">
+    {% csrf_token %}
+
+    <!-- Form Fields -->
+    {{ f_kontak.as_p }}
+
+    <!-- Submit Button -->
+    <div>
+      <button type="submit" class="bg-blue-600 text-white font-semibold px-6 py-2 rounded-md hover:bg-blue-700 transition">
+        Kirim
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock content %}

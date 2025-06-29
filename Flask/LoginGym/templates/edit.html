@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Anggota Gym</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+{% block content %}
+    <h2>Edit Anggota</h2>
+    <form method="POST">
+        <label>Nama:</label>
+        <input type="text" name="nama" value="{{ anggota.nama }}" required>
+        <br>
+        <label>Gender:</label>
+        <input type="text" name="gender" value="{{ anggota.gender }}">
+        <br>
+        <label>Ruangan:</label>
+        <input type="text" name="ruangan" value="{{ anggota.ruangan }}">
+        <br>
+        <label>Fitur:</label>
+        <input type="text" name="fitur" value="{{ anggota.fitur }}">
+        <br><br>
+        <input type="submit" value="Update">
+        <a href="{{ url_for('index') }}">Kembali</a>
+    </form>
+{% endblock %}
+</body>
+</html>
+

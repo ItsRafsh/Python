@@ -1,0 +1,28 @@
+flask --app app.app run --debug --reload        : menjalankan flask
+
+flask --app app.app db migrate -m "create posts table" : membuat table
+flask --app app.app db upgrade          : jangan lupa di upgrade
+
+
+
+
+
+
+26.00 errror di bagian posts nya ga tau ga mau keditect path nya
+
+
+
+
+
+
+episode terakhir
+- pip install gunicorn
+
+
+
+-pembuatan website complex dengan flask, ya sangat terlalu complek sampe aku pun bingung
+-belajar flask melalui video untuk membangun ini dan ya sangat bingung, but i can
+-databasenya menggunakan sqlite dengan menulis ini di Database path "D:\SqLite\blog.db"
+
+
+create by ItsRafsh

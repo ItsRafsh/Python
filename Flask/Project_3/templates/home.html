@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<div class="mb-4">
+    <h1 class="text-grey-darkest">Todo List</h1>
+    <form action="{{ url_for('create_task') }}" method="POST" class="flex mt-4">
+        <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" 
+            placeholder="Add Todo" name="task"
+        >
+        <input type="submit" value="Add" class="flex-no-shrink bg-teal hover:bg-teal-dark border-teal hover:border-teal-dark text-sm border-4 text-white py-1 px-2 rounded">
+    </form>
+</div>
+<div>
+    {% for task in tasks %}
+        <div class="flex items-center mb-4">
+            <p class="w-full text-grey-darkest">{{ task.name }}</p>
+            <a 
+                href="{{ url_for('edit_task', task_id=task.id) }}"
+                class="flex-no-shrink p-2 ml-2 border-2 rounded bg-blue hover:text-white hover:bg-blue-500 border-red hover:border-blue-dark text-sm border-4 text-white py-1 px-2 mr-2">
+                Edit
+            </a>
+
+            <form action="{{ url_for('delete_task', task_id=task.id) }}" method="POST">
+                <input type="submit" value="Delete" class="flex-no-shrink p-2 ml-2 border-2 bg-red hover:bg-red-dark border-red hover:border-red-dark text-sm border-4 text-white py-1 px-2 rounded">
+            </form>
+        </div>
+        {% else %}
+        <div class="flex items-center mb-4">
+            <p class="w-full text-grey-darkest">No Tasks, Please Create One!</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

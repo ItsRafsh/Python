@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+    <!-- Sidebar Kategori -->
+    <aside class="bg-gray-800 text-white rounded-xl p-4 md:col-span-1 shadow">
+      <h3 class="text-lg font-semibold mb-4 text-blue-400 border-b border-gray-600 pb-2">📁 KATEGORI</h3>
+      <ul class="space-y-2">
+        <li>
+          <a href="{% url 'youtube:index' %}" class="block text-white hover:text-blue-400 font-medium transition">
+            Semua
+          </a>
+        </li>
+        {% for kat in categories %}
+        <li>
+          <a href="{% url 'youtube:kategori_youtube' kat.Kategori__slug_kat %}" class="block text-gray-300 hover:text-blue-400 font-medium transition">
+            {{ kat.Kategori__nama }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </aside>
+
+    <!-- Konten Utama -->
+    <section class="md:col-span-3 space-y-6">
+      <div class="flex justify-between items-center mb-4">
+        <p class="text-gray-300 text-lg font-medium">
+          📜 Berikut adalah daftar video dalam kategori ini:
+        </p>
+        {% if request.user.is_authenticated %}
+          <a href="{% url 'youtube:create_yt' %}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-xl shadow">
+            + Tambah History
+          </a>
+        {% else %}
+          <span class="text-sm text-gray-400 italic">
+            Login dulu untuk menambah history.
+          </span>
+        {% endif %}
+      </div>
+
+      {% include 'snippets/messages.html' %}
+
+      {% for yt in youtube_kat %}
+      <div class="bg-gray-900 text-white rounded-xl shadow-lg p-5 hover:shadow-xl transition">
+        <a href="{% url 'youtube:detail_youtube' yt.slug_art %}">
+          <h2 class="text-2xl font-semibold text-blue-500 hover:underline">{{ yt.judul }}</h2>
+        </a>
+        <p class="text-sm text-gray-400 mt-1">📅 {{ yt.pupdate }}</p>
+        <p class="mt-3 text-gray-300 leading-relaxed">{{ yt.isi|truncatechars:200 }}</p>
+
+        <div class="mt-4 flex items-center gap-4 text-sm font-medium">
+          <span class="text-yellow-400">⭐ Rating: {{ yt.rating }}</span>
+          {% if request.user == yt.user %}
+            <a href="{% url 'youtube:update' yt.slug_art %}" class="text-blue-400 hover:text-blue-300 transition">
+              ✏️ Update
+            </a>
+            <a href="{% url 'youtube:delete' yt.slug_art %}" class="text-red-400 hover:text-red-300 transition">
+              🗑️ Delete
+            </a>
+          {% endif %}
+        </div>
+      </div>
+      {% empty %}
+      <p class="text-gray-400">Tidak ada video untuk kategori ini.</p>
+      {% endfor %}
+    </section>
+
+  </div>
+</div>
+{% endblock content %}

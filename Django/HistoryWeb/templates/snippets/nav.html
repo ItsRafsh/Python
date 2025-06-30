@@ -1,0 +1,39 @@
+<nav class="bg-gray-900 border-b border-gray-700 shadow-md sticky top-0 z-50" x-data="{ open: false }">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      <div class="flex-shrink-0">
+        <a href="/" class="text-xl font-bold text-white">HistoryVault</a>
+      </div>
+
+      <div class="hidden md:flex space-x-6">
+        <a href="/" class="text-gray-300 hover:text-white">Home</a>
+        <a href="{% url 'youtube:index' %}" class="text-gray-300 hover:text-white">YouTube</a>
+        <a href="{% url 'movie:index' %}" class="text-gray-300 hover:text-white">Movie</a>
+        <a href="{% url 'aktivitas:index' %}" class="text-gray-300 hover:text-white">Activities</a>
+      </div>
+
+      <div class="md:hidden">
+        <button @click="open = !open" class="text-gray-300 focus:outline-none">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex"
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"/>
+            <path :class="{'hidden': !open, 'inline-flex': open }" class="hidden"
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="md:hidden" x-show="open" @click.away="open = false">
+    <div class="px-2 pt-2 pb-3 space-y-1 bg-gray-800">
+      <a href="/" class="block px-3 py-2 text-gray-300 hover:text-white rounded">Home</a>
+      <a href="{% url 'youtube:index' %}" class="block px-3 py-2 text-gray-300 hover:text-white rounded">YouTube</a>
+      <a href="{% url 'movie:index' %}" class="block px-3 py-2 text-gray-300 hover:text-white rounded">Movie</a>
+      <a href="{% url 'aktivitas:index' %}" class="block px-3 py-2 text-gray-300 hover:text-white rounded">Activities</a>
+    </div>
+  </div>
+</nav>
+

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="max-w-3xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold text-white mb-6">Update History Youtube</h2>
+
+    <form method="POST" class="bg-gray-800 shadow-lg rounded-xl p-6 space-y-6">
+      {% csrf_token %}
+
+      {% for field in f_youtube %}
+        <div>
+          <label class="block text-gray-300 font-medium mb-2">{{ field.label_tag }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <p class="text-red-500 text-sm mt-1">{{ field.errors|striptags }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <div>
+        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-md transition">
+          Simpan Perubahan
+        </button>
+      </div>
+    </form>
+  </div>
+{% endblock content %}

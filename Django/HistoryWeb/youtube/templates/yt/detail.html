@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <div class="bg-gray-800 text-white rounded-xl shadow-lg p-6 space-y-6">
+
+    <!-- Judul -->
+    <h1 class="text-3xl font-bold text-blue-400 border-b border-blue-500 pb-4">
+      {{ detail_youtube.judul }}
+    </h1>
+
+
+    <!-- Tanggal update -->
+    <p class="text-sm text-gray-400">
+      ✍️ Create By: <span class="font-medium text-white">{{ detail_youtube.user.username }}</span><br>
+      🕒 Terakhir diperbarui: <span class="italic">{{ detail_youtube.pupdate }}</span>
+    </p>
+
+    <!-- Isi konten -->
+    <div class="text-lg text-gray-200 leading-relaxed">
+      {{ detail_youtube.isi }}
+    </div>
+
+    <!-- Rating -->
+    <div class="text-yellow-400 font-semibold">
+      ⭐ Rating: {{ detail_youtube.rating }}
+    </div>
+
+    <!-- Tombol kembali -->
+    <div class="pt-6">
+      <a href="{% url 'youtube:index' %}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow transition">
+        ← Kembali ke Daftar
+      </a>
+    </div>
+
+  </div>
+</div>
+{% endblock content %}
